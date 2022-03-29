@@ -1,0 +1,2 @@
+[web]
+13.57.232.218 ansible_user=ubuntu ansible_ssh_private_key_file=~/.ssh/id_rsa
