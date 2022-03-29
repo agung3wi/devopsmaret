@@ -10,7 +10,7 @@ terraform {
 
 provider "aws" {
   profile = "default"
-  region = "us-east-2"
+  region = "us-west-1"
 }
 
 variable "instance_tags" {
@@ -72,8 +72,8 @@ resource "aws_security_group_rule" "allow_ssh" {
 }
 
 resource "aws_instance" "ec2" {
-  count = 1
-  ami           = "ami-0fb653ca2d3203ac1" # ubuntu 20.04 region 
+  count = 2
+  ami           = "ami-01f87c43e618bf8f0" # ubuntu 20.04 region 
   instance_type = "t2.nano"
   key_name = "${aws_key_pair.keypair_demo.key_name}"
   vpc_security_group_ids = ["${aws_security_group.secure_web.id}"]
