@@ -3,7 +3,7 @@
   become: true
   tasks:
     - name: APT Update
-      apt: update_cache=yes
+      command: apt update
 
     - name: Install Nginx
-      apt: name=nginx state=latest
+      command: apt install nginx -y

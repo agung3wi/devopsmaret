@@ -1,0 +1,13 @@
+---
+- hosts: web
+  become: true
+  tasks:
+    - name: copy Docker Compose
+      copy:
+        src: ./docker-compose.yml
+        dest: /root/docker-compose.yml
+
+    # use files parameter to use multiple docker-compose.yml files
+    - name: deploy Docker Compose stack
+      become_user: root
+      command: docker-compose -f /root/docker-compose.yml up -d
