@@ -10,12 +10,12 @@ terraform {
 
 provider "aws" {
   profile = "default"
-  region = "us-west-1"
+  region = "us-east-1"
 }
 
 variable "instance_tags" {
   type = list
-  default = ["vm1", "vm2", "vm3"]
+  default = ["jenkins", "vm2", "vm3"]
 }
 
 resource "aws_key_pair" "keypair_demo" {
@@ -72,9 +72,9 @@ resource "aws_security_group_rule" "allow_ssh" {
 }
 
 resource "aws_instance" "ec2" {
-  count = 2
-  ami           = "ami-01f87c43e618bf8f0" # ubuntu 20.04 region 
-  instance_type = "t2.nano"
+  count = 1
+  ami           = "ami-04505e74c0741db8d" # ubuntu 20.04 region 
+  instance_type = "t2.medium"
   key_name = "${aws_key_pair.keypair_demo.key_name}"
   vpc_security_group_ids = ["${aws_security_group.secure_web.id}"]
 
