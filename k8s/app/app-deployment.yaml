@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    io.kompose.service: app
+  name: app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      io.kompose.service: app
+  template:
+    metadata:
+      labels:
+        io.kompose.service: app
+    spec:
+      containers:
+        - image: devopsmaret/laravel-app:v1
+          env:
+            - name: APP_NAME
+              value: Laravel
+            - name: APP_ENV
+              value: local
+            - name: APP_DEBUG
+              value: "false"
+            - name: APP_KEY
+              value: "base64:xYPaME/4NNcy/wfshBLPyjVYRgXOMxCLIJEeB8B21E4="
+            - name: DB_CONNECTION
+              value: mysql
+            - name: DB_HOST
+              value: "mysql-master"
+            - name: DB_PORT
+              value: "3306"
+            - name: DB_DATABASE
+              value: "bootcamp"
+            - name: DB_USERNAME
+              value: "bootcamp"
+            - name: DB_PASSWORD
+              value: "bootcamp"
+          name: app
+          ports:
+            - containerPort: 80
+          resources: {}
+      restartPolicy: Always
+status: {}
