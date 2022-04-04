@@ -37,6 +37,14 @@ spec:
               value: "bootcamp"
             - name: DB_PASSWORD
               value: "bootcamp"
+            - name: SESSION_DRIVER
+              value: "redis"
+            - name: REDIS_HOST
+              value: "redis"
+            - name: REDIS_PASSWORD
+              value: "123456"
+            - name: REDIS_PORT
+              value: "6379"
           name: app
           ports:
             - containerPort: 80
